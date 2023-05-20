@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>一次面试题记录 | WenhuiBlog</title><meta name="author" content="浅雾灰"><meta name="copyright" content="浅雾灰"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="一、判断回文字符串回文字符串：字符串正序读与倒序读的结果相同 方法一：数组指针">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一次面试题记录">
+<meta property="og:url" content="http://yoursite.com/2020/12/29/%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="WenhuiBlog">
+<meta property="og:description" content="一、判断回文字符串回文字符串：字符串正序读与倒序读的结果相同 方法一：数组指针">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/img/amy.jpg">
+<meta property="article:published_time" content="2020-12-29T13:07:05.000Z">
+<meta property="article:modified_time" content="2021-01-03T08:51:55.892Z">
+<meta property="article:author" content="浅雾灰">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/img/amy.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/2020/12/29/%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AE%B0%E5%BD%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '一次面试题记录',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-01-03 16:51:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/amy.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/bg.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="WenhuiBlog"><span class="site-name">WenhuiBlog</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">一次面试题记录</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2020-12-29T13:07:05.000Z" title="Created 2020-12-29 21:07:05">2020-12-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-01-03T08:51:55.892Z" title="Updated 2021-01-03 16:51:55">2021-01-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="一次面试题记录"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="一、判断回文字符串"><a href="#一、判断回文字符串" class="headerlink" title="一、判断回文字符串"></a>一、判断回文字符串</h2><p>回文字符串：字符串正序读与倒序读的结果相同</p>
+<h4 id="方法一：数组指针"><a href="#方法一：数组指针" class="headerlink" title="方法一：数组指针"></a>方法一：数组指针</h4>  <span id="more"></span>
+
+<h5 id="数组指针方式：移动头指针与尾指针进行元素比较"><a href="#数组指针方式：移动头指针与尾指针进行元素比较" class="headerlink" title="数组指针方式：移动头指针与尾指针进行元素比较"></a>数组指针方式：移动头指针与尾指针进行元素比较</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">&#x27;asdfgfdsa&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> len = s.<span class="property">length</span>;</span><br><span class="line"><span class="keyword">var</span> mid = len % <span class="number">2</span> ? len / <span class="number">2</span> - <span class="number">1</span> : len / <span class="number">2</span>; <span class="comment">// 字符串长度为奇、偶数时的比较次数 </span></span><br><span class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; mid; i++) &#123;</span><br><span class="line">  <span class="keyword">let</span> head = s[i];</span><br><span class="line">  <span class="keyword">let</span> tail = s[len - i - <span class="number">1</span>];</span><br><span class="line">	</span><br><span class="line">  <span class="keyword">if</span> (head !== tail) &#123;</span><br><span class="line">    flag = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(flag);</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法二：数组方法"><a href="#方法二：数组方法" class="headerlink" title="方法二：数组方法"></a>方法二：数组方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isPalindrome</span>(<span class="params">str</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> str == str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>().<span class="title function_">replaceAll</span>(<span class="string">&#x27;,&#x27;</span>,<span class="string">&#x27;&#x27;</span>) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="二、flex布局-子元素相对于父元素垂直居中"><a href="#二、flex布局-子元素相对于父元素垂直居中" class="headerlink" title="二、flex布局-子元素相对于父元素垂直居中"></a>二、flex布局-子元素相对于父元素垂直居中</h2><p>父元素关键CSS设置如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>: flex;</span><br><span class="line"><span class="attribute">justify-content</span>: center;</span><br><span class="line"><span class="attribute">align-items</span>: center;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、this指向问题"><a href="#三、this指向问题" class="headerlink" title="三、this指向问题"></a>三、this指向问题</h2><p>要点：this永远指向一个对象，this的指向完全取决于函数调用的位置。</p>
+<blockquote>
+<p>不管在什么地方使用this，它必然会指向某个对象；一切皆对象，运行环境也是对象，所以函数都是在某个对象下运行，而this就是函数运行时所在的对象。this的指向是动态的，很难事先确定到底指向哪个对象。</p>
+</blockquote>
+<p>原理：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">id</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">f</span>: a</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> id = <span class="number">2</span>;</span><br><span class="line">obj.<span class="title function_">f</span>(); 	<span class="comment">//1</span></span><br><span class="line"><span class="title function_">a</span>(); 		<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<p>this会根据运行环境的改变而改变，同时，函数中的this也只能在运行时才能最终确定运行环境</p>
+<p>window定时器中的this：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="attr">fun</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">setInterval</span>(obj.<span class="property">fun</span>,<span class="number">1000</span>);      <span class="comment">// this指向window对象</span></span><br><span class="line"><span class="built_in">setInterval</span>(<span class="string">&#x27;obj.fun()&#x27;</span>,<span class="number">1000</span>);  <span class="comment">// this指向obj对象</span></span><br></pre></td></tr></table></figure>
+
+<p>setInterval()接受两个参数，第一个参数允许是一个函数或者是一段可执行的JS代码，第二个参数则是执行前面函数或者代码的时间间隔</p>
+<p>在上面的代码中，setInterval(obj.fun,1000) 的第一个参数是obj对象的fun ，因为 JS 中函数可以被当做值来做引用传递，实际就是将这个函数的地址当做参数传递给了 setInterval 方法，换句话说就是 setInterval 的第一参数接受了一个函数，那么此时1000毫秒后，函数的运行就已经是在window对象下了，也就是函数的调用者已经变成了window对象，所以其中的this则指向的全局window对象；</p>
+<p>而在 setInterval(‘obj.fun()’,1000) 中的第一个参数，实际则是传入的一段可执行的 JS 代码；1000毫秒后当 JS 引擎来执行这段代码时，则是通过 obj 对象来找到 fun 函数并调用执行，那么函数的运行环境依然在 对象 obj 内，所以函数内部的this也就指向了 obj 对象；</p>
+<p>call 、apply方法指定this指向：</p>
+<blockquote>
+<p>call语法规则：函数名.call(obj,args);</p>
+<p>obj：函数内this要指向的对象</p>
+<p>args：参数列表</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;abc&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;bcd&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">age</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(age,<span class="variable language_">this</span>)</span><br><span class="line">&#125;</span><br><span class="line">foo.<span class="title function_">call</span>(a,<span class="number">20</span>) <span class="comment">// 20,&#123;name:&quot;abc&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>apply语法规则：函数名称.apply(obj,[arg1,arg2…,argN])</p>
+<p>obj：函数内this要指向的对象</p>
+<p>[arg1,arg2…argN] : 参数列表，要求格式为数组</p>
+</blockquote>
+<p>面试题为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">b</span>(); </span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">b</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>) <span class="comment">//指向window</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="四、箭头函数和function的区别"><a href="#四、箭头函数和function的区别" class="headerlink" title="四、箭头函数和function的区别"></a>四、箭头函数和function的区别</h2><ul>
+<li><p>this指向不同</p>
+<p>使用function定义的函数，this的指向随着调用环境的变化而变化的，而箭头函数中的this指向是固定不变的，一直指向的是定义函数的环境。</p>
+</li>
+<li><p>构造函数</p>
+<p>function函数可定义构造函数，箭头函数不可用作构造器</p>
+</li>
+<li><p>变量提升</p>
+<p>变量提升的含义：</p>
+<p>ES6之前一般使用var来声明变量，声明提升到它所在作用域的顶端去执行，到代码所在的位置来赋值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">//undefined</span></span><br><span class="line">	<span class="keyword">var</span> a = <span class="number">123</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码实际执行顺序如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> a;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(a);</span><br><span class="line">	a = <span class="number">123</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>经典面试题：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(v1);<span class="comment">//undefined</span></span><br><span class="line"><span class="keyword">var</span> v1 = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v1);<span class="comment">//undefined</span></span><br><span class="line">    <span class="keyword">var</span> v1 = <span class="number">200</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v1);<span class="comment">//200</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(v1);<span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+
+<p>函数声明的时候存在变量提升</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">foo</span>()  <span class="comment">// foo</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;foo&#x27;</span>) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fn</span>() <span class="comment">//Uncaught TypeError: fn is not a function</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、选择排序与冒泡排序"><a href="#五、选择排序与冒泡排序" class="headerlink" title="五、选择排序与冒泡排序"></a>五、选择排序与冒泡排序</h2><blockquote>
+<p>冒泡排序、插入排序、选择排序合称为简单排序</p>
+</blockquote>
+<p>冒泡排序原理：<br>依次比较相邻的两个值，如果后面的比前面的小，则将小的元素排到前面。依照这个规则进行多次并且递减的迭代，直到顺序正确。</p>
+<p>时间复杂度：O(n^2)</p>
+<p>空间复杂度：O(1)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//思路：先比较一轮一次，然后用for循环比较一轮多次，然后再加for循环比较多轮多次</span></span><br><span class="line"><span class="comment">//比较轮数</span></span><br><span class="line"><span class="keyword">for</span> ( <span class="keyword">var</span> i = <span class="number">0</span>; i &lt; array.<span class="property">length</span>-<span class="number">1</span>; i++)&#123;</span><br><span class="line">        <span class="comment">//每轮比较次数，次数=长度-1-此时的轮数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; array.<span class="property">length</span>-<span class="number">1</span>-i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (array[j] &gt; array[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">var</span> temp = array[i];</span><br><span class="line">                array[j] = array[j + <span class="number">1</span>];</span><br><span class="line">                array[j + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>选择排序原理：</p>
+<p>首先从原始数组中找到最小的元素，并把该元素放在数组的最前面，然后再从剩下的元素中寻找最小的元素，放在之前最小元素的后面，知道排序完毕。</p>
+<p>时间复杂度：O(n^2)</p>
+<p>空间复杂度：O(1)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>;i &lt; arr.<span class="property">length</span> - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    minIndex = i;</span><br><span class="line">    <span class="keyword">for</span> (j = i + <span class="number">1</span>; j &lt; arr.<span class="property">length</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[j] &lt; arr[minIndex]) &#123;</span><br><span class="line">            minIndex = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    temp = arr[minIndex];</span><br><span class="line">    arr[minIndex] = arr[i];</span><br><span class="line">    arr[i] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、闭包用来解决什么问题"><a href="#六、闭包用来解决什么问题" class="headerlink" title="六、闭包用来解决什么问题"></a>六、闭包用来解决什么问题</h2><p>从函数环境生命周期开始理解：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123; </span><br><span class="line">	<span class="keyword">let</span> n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params"></span>) &#123; </span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(++n) </span><br><span class="line">    &#125;; </span><br><span class="line">    <span class="title function_">sum</span>(); </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="title function_">fn</span>();</span><br><span class="line"><span class="title function_">a</span>();<span class="comment">//2</span></span><br><span class="line"><span class="title function_">a</span>();<span class="comment">//3</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="title function_">fn</span>();</span><br><span class="line"><span class="title function_">b</span>();<span class="comment">//2</span></span><br><span class="line"><span class="title function_">b</span>();<span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>sum函数返回出去，在执行fn时，sum函数相当于也被外部调用，变量会保存到外部。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> m = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">show</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(++m);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">show</span>();</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="title function_">fn</span>();</span><br><span class="line"><span class="title function_">a</span>();<span class="comment">//2</span></span><br><span class="line"><span class="title function_">a</span>();<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>sum函数创建的数据没有被外部引用，每次都会反复创建</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> m = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">show</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(++m);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="title function_">fn</span>()();</span><br><span class="line"><span class="title function_">a</span>();<span class="comment">//2</span></span><br><span class="line"><span class="title function_">a</span>();<span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>函数被外部引用，延伸了函数环境声明周期</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> m = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">show</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(++m,++n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="title function_">fn</span>()();</span><br><span class="line"><span class="title function_">a</span>();<span class="comment">//2,2</span></span><br><span class="line"><span class="title function_">a</span>();<span class="comment">//3,3</span></span><br></pre></td></tr></table></figure>
+
+<p>模拟var的伪块作用域：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= <span class="number">3</span>; i++) &#123;</span><br><span class="line">    (<span class="keyword">function</span>(<span class="params">i</span>) &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">        &#125;, <span class="number">1000</span>)</span><br><span class="line">    &#125;)(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>什么是闭包：</p>
+<blockquote>
+<p>函数可以访问其他函数作用域当中的数据就称为闭包</p>
+<p>闭包是用来解决全局变量私有化的，也可以说成局部变量全局化。</p>
+</blockquote>
+<p>例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(++n);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">let</span> a = <span class="title function_">fn</span>();</span><br><span class="line">    <span class="title function_">a</span>();</span><br><span class="line">    <span class="title function_">a</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>闭包案例：获取区间数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> goods = [&#123;</span><br><span class="line">	<span class="attr">title</span>: <span class="string">&quot;面包&quot;</span>,</span><br><span class="line">    <span class="attr">price</span>: <span class="number">10</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">	<span class="attr">title</span>: <span class="string">&quot;牛奶&quot;</span>,</span><br><span class="line">    <span class="attr">price</span>: <span class="number">8</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">	<span class="attr">title</span>: <span class="string">&quot;玉米&quot;</span>,</span><br><span class="line">    <span class="attr">price</span>: <span class="number">4</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">	<span class="attr">title</span>: <span class="string">&quot;馒头&quot;</span>,</span><br><span class="line">    <span class="attr">price</span>: <span class="number">1</span></span><br><span class="line">&#125;]</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">between</span>(<span class="params">a,b</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params">g</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> g.<span class="property">price</span> &gt;= a &amp;&amp; g.<span class="property">price</span> &lt;= b;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">table</span>(goods.<span class="title function_">filter</span>(<span class="title function_">between</span>(<span class="number">5</span>, <span class="number">10</span>)))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>外界无法访问闭包内部的数据，如果在闭包内声明变量，外界是无法访问的，除非闭包主动向外界提供访问接口</p>
+<p>一般的函数，调用完毕之后，系统自动注销函数，而对于闭包来说，在外部函数被调用之后，闭包结构依然保存在</p>
+<p>使用闭包会占有内存资源，过多的使用闭包会导致内存溢出等.</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45788388/article/details/105865251">https://blog.csdn.net/weixin_45788388/article/details/105865251</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://yoursite.com">浅雾灰</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/12/29/%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AE%B0%E5%BD%95/">http://yoursite.com/2020/12/29/%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AE%B0%E5%BD%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/javascript/">javascript</a><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></div><div class="post_share"><div class="social-share" data-image="/img/amy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/12/30/%E5%85%B3%E4%BA%8Eflex%E5%B8%83%E5%B1%80/" title="关于flex布局"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">关于flex布局</div></div></a></div><div class="next-post pull-right"><a href="/2020/02/15/Javascript%E8%AF%95%E9%A2%98%E7%BB%83%E4%B9%A0/" title="Javascript试题练习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Javascript试题练习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2020/12/30/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/" title="第二次面试记录"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-30</div><div class="title">第二次面试记录</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/amy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">浅雾灰</div><div class="author-info__description">浅雾空濛，不留寸灰</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%A4%E6%96%AD%E5%9B%9E%E6%96%87%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.</span> <span class="toc-text">一、判断回文字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88"><span class="toc-number">1.0.1.</span> <span class="toc-text">方法一：数组指针</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E6%96%B9%E5%BC%8F%EF%BC%9A%E7%A7%BB%E5%8A%A8%E5%A4%B4%E6%8C%87%E9%92%88%E4%B8%8E%E5%B0%BE%E6%8C%87%E9%92%88%E8%BF%9B%E8%A1%8C%E5%85%83%E7%B4%A0%E6%AF%94%E8%BE%83"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">数组指针方式：移动头指针与尾指针进行元素比较</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">方法二：数组方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81flex%E5%B8%83%E5%B1%80-%E5%AD%90%E5%85%83%E7%B4%A0%E7%9B%B8%E5%AF%B9%E4%BA%8E%E7%88%B6%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD"><span class="toc-number">2.</span> <span class="toc-text">二、flex布局-子元素相对于父元素垂直居中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81this%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">三、this指向问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%E5%92%8Cfunction%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">4.</span> <span class="toc-text">四、箭头函数和function的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text">五、选择排序与冒泡排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%97%AD%E5%8C%85%E7%94%A8%E6%9D%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">六、闭包用来解决什么问题</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/05/19/%E5%85%B3%E4%BA%8ESQL%E4%BC%98%E5%8C%96/" title="No title"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2023/05/19/%E5%85%B3%E4%BA%8ESQL%E4%BC%98%E5%8C%96/" title="No title">No title</a><time datetime="2023-05-19T13:36:38.083Z" title="Created 2023-05-19 21:36:38">2023-05-19</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2020/12/30/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/" title="第二次面试记录">第二次面试记录</a><time datetime="2020-12-30T12:16:33.000Z" title="Created 2020-12-30 20:16:33">2020-12-30</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2020/12/30/%E5%85%B3%E4%BA%8Eflex%E5%B8%83%E5%B1%80/" title="关于flex布局">关于flex布局</a><time datetime="2020-12-30T02:02:33.000Z" title="Created 2020-12-30 10:02:33">2020-12-30</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2020/12/29/%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E9%A2%98%E8%AE%B0%E5%BD%95/" title="一次面试题记录">一次面试题记录</a><time datetime="2020-12-29T13:07:05.000Z" title="Created 2020-12-29 21:07:05">2020-12-29</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2020/02/15/Javascript%E8%AF%95%E9%A2%98%E7%BB%83%E4%B9%A0/" title="Javascript试题练习">Javascript试题练习</a><time datetime="2020-02-15T14:13:10.000Z" title="Created 2020-02-15 22:13:10">2020-02-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 浅雾灰</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":220,"height":280},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
